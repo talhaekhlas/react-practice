@@ -70,23 +70,18 @@ class App extends Component {
       //   'belt':this.state.belt
       // });
 
-      // this.state.ninjas[this.state.ninjas.length] = {
-      //   id: Math.round(Math.random()*100), 
-      //   'name':this.state.name,
-      //   'age':this.state.age,
-      //   'belt':this.state.belt
-      // }
+       const ninjas= [...this.state.ninjas,{
+            id: Date.now(), 
+            'name':this.state.name,
+            'age':this.state.age,
+            'belt':this.state.belt
+          }]
 
       // let ninjas = this.state.ninjas;
       // console.log(this.state);
 
       this.setState({         
-        ninjas:[...this.state.ninjas,{
-          id: Date.now(), 
-          'name':this.state.name,
-          'age':this.state.age,
-          'belt':this.state.belt
-        }]
+        ninjas
       })
 
       
