@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
+import React from 'react'
 
 
-function MyHello() {
-  return (
-    <div>Hello World 2 </div>
-  )
-}
+// function MyHello() {
+//   return (
+//     <div>Hello World 2 </div>
+//   )
+// }
 
-const MyWorld = props => <div>I Love {props.name}</div>
+//const MyWorld = props => <div>I Love {props.name}</div>
 
 export const AddNinja = (props) => {
 
@@ -152,7 +153,7 @@ export const AddNinja = (props) => {
 
         <div>{ props.fullName}
         </div>
-        <MyWorld name='Sadik'/>
+        {/* <MyWorld name='Sadik'/> */}
 
         <input type="button" value="Click here to change name" onClick={ () => props.getData() }/>
 

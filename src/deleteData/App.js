@@ -30,16 +30,25 @@ class App extends Component {
 
   handleChange = (e) => {
 
-      console.log( this.props )
+      // console.log( this.props )
   
       const myValue = e.target.value
       const myField = e.target.id
+      
   
-  
+      // console.log(this.state)
+
+
       this.setState( state => ({
         ...state,
           [myField]: myValue
-      }))
+      })
+      
+      )
+
+      // console.log(this.state)
+
+      // console.log(this.state.ninjas.name);
   
     }
 
@@ -47,8 +56,34 @@ class App extends Component {
     handleSubmit = (e) => {
     
       e.preventDefault();
+
+     
+      //const afterSubmit ={};
+      //const hamba =  {'name':this.state.name,'age':this.state.age,'belt':this.state.belt};
+
       
-      console.log(this.state);
+      this.state.ninjas[Math.round(Math.random()*100)] = {'name':this.state.name,'age':this.state.age,'belt':this.state.belt};
+
+      
+
+      let ninjas = this.state.ninjas;
+      console.log(ninjas);
+
+      this.setState({
+         
+          ninjas :ninjas
+          
+      })
+
+      
+      console.log(this.state.ninjas);
+
+
+      
+
+      
+
+      
 
       return 0;
       if(this.state.name.trim().length !==0 && 
