@@ -28,6 +28,49 @@ class App extends Component {
   }
 
 
+  handleChange = (e) => {
+
+      console.log( this.props )
+  
+      const myValue = e.target.value
+      const myField = e.target.id
+  
+  
+      this.setState( state => ({
+        ...state,
+          [myField]: myValue
+      }))
+  
+    }
+
+
+    handleSubmit = (e) => {
+    
+      e.preventDefault();
+      
+      console.log(this.state);
+
+      return 0;
+      if(this.state.name.trim().length !==0 && 
+      this.state.age.trim().length !==0 && 
+      this.state.belt.trim().length !==0 ){
+  
+      this.props.addNinja(this.state);
+  
+        this.setState({
+          name: '',
+          age: '',
+          belt: '',
+          nameError: '',
+          ageError: '',
+          beltError: ''
+          
+        })
+  
+      }
+    }
+
+
   deleteNinja = (id) => {
  
     let ninjas = this.state.ninjas.filter(ninja => {
@@ -37,6 +80,9 @@ class App extends Component {
       ninjas: ninjas
     });
   }
+
+
+
 
 
   editNinja = (id) => {
@@ -58,7 +104,14 @@ class App extends Component {
       <div className="App">
         <h3 align="center">Todo App</h3>
         <Ninjas ninjas={this.state.ninjas} deleteNinja={this.deleteNinja} editNinja={this.editNinja} />
-        <AddNinja {...this.state} addNinja={this.addNinja} getData={this.getData}/>
+        <AddNinja 
+        {...this.state} 
+        addNinja={this.addNinja}
+         handleChange={this.handleChange}
+          getData={this.getData}
+          handleSubmit={this.handleSubmit}
+          
+          />
       </div>
     );
   }
