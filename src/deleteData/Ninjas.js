@@ -10,9 +10,8 @@ const Ninjas = ({ninjas, deleteNinja,editNinja}) => {
           </tr>
         </thead>
         <tbody>
-      
       { 
-        ninjas.map(ninja => {
+        ninjas.map( (ninja, index) => {
           return (
             
               <tr key={ninja.id}>
@@ -20,7 +19,7 @@ const Ninjas = ({ninjas, deleteNinja,editNinja}) => {
                   <td>{ ninja.age }</td>
                   <td>{ ninja.belt }</td>
                   <td>
-                    <button className="waves-effect waves-light btn-small" onClick={() => {deleteNinja(ninja.id)}}>delete</button>
+                    <button className="waves-effect waves-light btn-small" onClick={() => {deleteNinja(ninja.id, index)}}>delete</button>
                     &nbsp;&nbsp;<button className="waves-effect waves-light btn-small" onClick={() => {editNinja(ninja.id)}}>edit</button>   
                   </td>
               </tr>

@@ -62,21 +62,34 @@ class App extends Component {
       //const hamba =  {'name':this.state.name,'age':this.state.age,'belt':this.state.belt};
 
       
-      this.state.ninjas[Math.round(Math.random()*100)] = {'name':this.state.name,'age':this.state.age,'belt':this.state.belt};
+      // this.state.ninjas.push({ 
+      //   id: Math.round(Math.random()*100), 
+      //   'name':this.state.name,
+      //   'age':this.state.age,
+      //   'belt':this.state.belt
+      // });
 
-      
+      // this.state.ninjas[this.state.ninjas.length] = {
+      //   id: Math.round(Math.random()*100), 
+      //   'name':this.state.name,
+      //   'age':this.state.age,
+      //   'belt':this.state.belt
+      // }
 
-      let ninjas = this.state.ninjas;
-      console.log(ninjas);
+      // let ninjas = this.state.ninjas;
+      // console.log(this.state);
 
-      this.setState({
-         
-          ninjas :ninjas
-          
+      this.setState({         
+        ninjas:[...this.state.ninjas,{
+          id: Date.now(), 
+          'name':this.state.name,
+          'age':this.state.age,
+          'belt':this.state.belt
+        }]
       })
 
       
-      console.log(this.state.ninjas);
+      console.log(this.state);
 
 
       
@@ -106,13 +119,14 @@ class App extends Component {
     }
 
 
-  deleteNinja = (id) => {
- 
+  deleteNinja = (id, index) => {
+    console.log( JSON.parse( JSON.stringify(this.state.ninjas)) )
     let ninjas = this.state.ninjas.filter(ninja => {
       return ninja.id !== id
     });
+    console.log( JSON.parse( JSON.stringify(ninjas)) )
     this.setState({
-      ninjas: ninjas
+      ninjas: [...ninjas]
     });
   }
 
