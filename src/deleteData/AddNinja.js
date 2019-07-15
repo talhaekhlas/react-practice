@@ -166,7 +166,13 @@ export const AddNinja = (props) => {
                 {/* <input type="text" className="form-control" value={this.state.name} id="name" onChange={this.handleChange} />
                 <span className="error-message">{this.state.nameError}</span> */}
 
-                <input type="text" className="form-control"  id="name" onChange={props.handleChange} />
+                <input
+                  type="text"
+                  className="form-control" 
+                  id="name"
+                  onChange={props.handleChange}
+                  value={props.name}
+                />
                 
               </div>
               <div className="form-group">

@@ -5,6 +5,7 @@ import AddNinja from './AddNinja'
 class App extends Component {
   state = {
     fullName: 'Shams Sadek',
+    name: 'Shajib',
     ninjas: [
       { name: 'Ryu', age: 30, belt: 'black', id: 1 },
       { name: 'Yoshi', age: 20, belt: 'green', id: 2 },
@@ -135,7 +136,18 @@ class App extends Component {
 
 
   editNinja = (id) => {
-     console.log(this.ninjas);
+
+    const editItem = this.state.ninjas.find( item => item.id == id)
+
+
+    console.log(editItem)
+
+    this.setState( state => ({
+      ...state,
+      name: editItem.name
+    }))
+
+
      return 0;
     // let ninjas = this.state.ninjas.filter(ninja => {
     //   return ninja.id !== id
