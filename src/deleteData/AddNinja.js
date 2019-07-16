@@ -160,7 +160,9 @@ export const AddNinja = (props) => {
 
         <div className="row">
             <div className="col-md-12">
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={props.editButton?props.editSubmit:props.handleSubmit}>
+
+
               <div className="form-group">
                 <label htmlFor="name">Name:</label>
                 {/* <input type="text" className="form-control" value={this.state.name} id="name" onChange={this.handleChange} />
@@ -180,7 +182,13 @@ export const AddNinja = (props) => {
                 {/* <input type="text" className="form-control" value={this.state.age} id="age" onChange={this.handleChange} />
                 <span className="error-message">{this.state.ageError}</span> */}
 
-                <input type="text" className="form-control"  id="age" onChange={props.handleChange} />
+                <input 
+                type="text" 
+                className="form-control" 
+                 id="age" 
+                 onChange={props.handleChange}
+                 value={props.age}
+                  />
                 
               </div>
               <div className="form-group">
@@ -188,11 +196,34 @@ export const AddNinja = (props) => {
                 {/* <input type="text" className="form-control" value={this.state.belt} id="belt" onChange={this.handleChange} />
                 <span className="error-message">{this.state.beltError}</span> */}
 
-                <input type="text" className="form-control"  id="belt" onChange={props.handleChange} />
+                <input 
+                type="text"
+                 className="form-control" 
+                 id="belt" 
+                 onChange={props.handleChange}
+                 value={props.belt}
+                  />
                 
               </div>
-              <button className="waves-effect waves-light btn-small" type="submit">Submit</button>
 
+              {
+                props.editButton?
+                <div>
+                  <button 
+                  className="waves-effect waves-light btn-small"
+                  onClick={() => {props.editSubmit()}}>
+                    Update
+                  </button>
+                  &nbsp;&nbsp;<button 
+                  className="waves-effect waves-light btn-small" 
+                  onClick={() => {props.cancelButton()}}>
+                  Cancel
+                  </button>
+                  </div>
+                :
+                <button className="waves-effect waves-light btn-small" type="submit">Submit</button>
+              }
+              
               
            </form>
             </div>

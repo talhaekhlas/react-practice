@@ -5,7 +5,10 @@ import AddNinja from './AddNinja'
 class App extends Component {
   state = {
     fullName: 'Shams Sadek',
-    name: 'Shajib',
+    name: '',
+    age: '',
+    belt: '',
+    editButton:'',
     ninjas: [
       { name: 'Ryu', age: 30, belt: 'black', id: 1 },
       { name: 'Yoshi', age: 20, belt: 'green', id: 2 },
@@ -57,6 +60,9 @@ class App extends Component {
     handleSubmit = (e) => {
     
       e.preventDefault();
+
+      
+
 
      
       //const afterSubmit ={};
@@ -135,19 +141,48 @@ class App extends Component {
     const editItem = this.state.ninjas.find( item => item.id == id)
 
 
-    console.log(editItem)
+    console.log(editItem);
 
     this.setState( state => ({
       ...state,
-      name: editItem.name
+      name: editItem.name,
+      age: editItem.age,
+      belt: editItem.belt,
+      editButton:'enable please',
+    }))
+
+  }
+
+
+  editSubmit = (e) => {
+    
+    this.setState( state => ({
+      ...state,
+      
+      editButton:'',
+      name: '',
+      age: '',
+      belt: '',
     }))
 
 
-     return 0;
-    // let ninjas = this.state.ninjas.filter(ninja => {
-    //   return ninja.id !== id
-    // });
-    
+
+  }
+
+
+  cancelButton = () => {
+
+   
+
+    this.setState( state => ({
+      ...state,
+      
+      editButton:'',
+      name: '',
+      age: '',
+      belt: '',
+    }))
+
   }
 
   
@@ -166,6 +201,7 @@ class App extends Component {
          handleChange={this.handleChange}
           getData={this.getData}
           handleSubmit={this.handleSubmit}
+          cancelButton={this.cancelButton}
           
           />
       </div>
