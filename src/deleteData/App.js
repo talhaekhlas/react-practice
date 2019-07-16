@@ -8,6 +8,8 @@ class App extends Component {
     name: '',
     age: '',
     belt: '',
+    id: '',
+    indexOfNinja:'',
     editButton:'',
     ninjas: [
       { name: 'Ryu', age: 30, belt: 'black', id: 1 },
@@ -93,31 +95,6 @@ class App extends Component {
       
       console.log(this.state);
 
-
-      
-
-      
-
-      
-
-      return 0;
-      if(this.state.name.trim().length !==0 && 
-      this.state.age.trim().length !==0 && 
-      this.state.belt.trim().length !==0 ){
-  
-      this.props.addNinja(this.state);
-  
-        this.setState({
-          name: '',
-          age: '',
-          belt: '',
-          nameError: '',
-          ageError: '',
-          beltError: ''
-          
-        })
-  
-      }
     }
 
 
@@ -136,9 +113,9 @@ class App extends Component {
 
 
 
-  editNinja = (id) => {
+  editNinja = (id,index) => {
 
-    const editItem = this.state.ninjas.find( item => item.id == id)
+    const editItem = this.state.ninjas.find( item => item.id === id)
 
 
     console.log(editItem);
@@ -148,26 +125,15 @@ class App extends Component {
       name: editItem.name,
       age: editItem.age,
       belt: editItem.belt,
+      id: editItem.id,
+      indexOfNinja:index,
       editButton:'enable please',
     }))
 
   }
 
 
-  editSubmit = (e) => {
-    
-    this.setState( state => ({
-      ...state,
-      
-      editButton:'',
-      name: '',
-      age: '',
-      belt: '',
-    }))
-
-
-
-  }
+  
 
 
   cancelButton = () => {
@@ -181,9 +147,70 @@ class App extends Component {
       name: '',
       age: '',
       belt: '',
+      id: '',
     }))
 
   }
+
+
+  editSubmit = (e) => {
+    e.preventDefault();
+
+    const data = this.state.ninjas
+
+    const findIndex = data.findIndex( item => item.id == this.state.id)
+
+    const result = [
+      ...data.slice(0,findIndex),
+      {
+        name: this.state.name,
+        id: this.state.id,
+        age: this.state.age,
+        belt: this.state.belt
+      },
+      ...data.slice(findIndex+1)
+    ]
+
+    console.log('result', result)
+
+    this.setState( state => ({
+      ...state,
+      ninjas: result
+    }))
+
+    // const editItem = this.state.ninjas.find( item => item.id == this.state.id)
+
+    // this.state.ninjas[this.state.index].name= this.state.ninjas.name;
+    // this.state.ninjas[this.state.index].age= this.state.ninjas.age;
+    // this.state.ninjas[this.state.index].belt= this.state.ninjas.belt;
+
+    
+
+    //  const ninjasUpdate = [...this.state.ninjas];
+
+     
+
+    
+
+
+    this.setState( state => ({
+      ...state,
+      // ninjas:ninjasUpdate,
+      
+      editButton:'',
+      name: '',
+      age: '',
+      belt: '',
+      id: '',
+    }))
+
+    
+
+
+  }
+
+
+  
 
   
 
@@ -202,6 +229,7 @@ class App extends Component {
           getData={this.getData}
           handleSubmit={this.handleSubmit}
           cancelButton={this.cancelButton}
+          editSubmit={this.editSubmit}
           
           />
       </div>

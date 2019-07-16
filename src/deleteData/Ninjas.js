@@ -20,7 +20,7 @@ const Ninjas = ({ninjas, deleteNinja,editNinja}) => {
                   <td>{ ninja.belt }</td>
                   <td>
                     <button className="waves-effect waves-light btn-small" onClick={() => {deleteNinja(ninja.id, index)}}>delete</button>
-                    &nbsp;&nbsp;<button className="waves-effect waves-light btn-small" onClick={() => {editNinja(ninja.id)}}>edit</button>   
+                    &nbsp;&nbsp;<button className="waves-effect waves-light btn-small" onClick={() => {editNinja(ninja.id,index)}}>edit</button>   
                   </td>
               </tr>
             
